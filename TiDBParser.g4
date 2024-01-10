@@ -11,6 +11,33 @@ singleColumnDef:
     columnDef COMMA_SYMBOL? EOF
 ;
 
+singleConstraint:
+    constraint COMMA_SYMBOL? EOF
+;
+
+constraint:
+    indexDef
+    | foreignKeyDef
+;
+
+foreignKeyDef:
+    constraintName? FOREIGN_SYMBOL KEY_SYMBOL indexName? keyList references
+;
+
+indexDef:
+    (INDEX_SYMBOL | KEY_SYMBOL) indexName keyListWithExpression indexOptionList?
+;
+
+indexOptionList:
+    indexOption+
+;
+
+indexOption:
+    COMMENT_SYMBOL textStringLiteral
+    | VISIBLE_SYMBOL
+    | INVISIBLE_SYMBOL
+;
+
 columnDef:
     columnName dataType columnOptionList?
 ;
@@ -1857,11 +1884,6 @@ keyListVariants:
 
 indexType:
     algorithm = (BTREE_SYMBOL | RTREE_SYMBOL | HASH_SYMBOL)
-;
-
-indexOption:
-    commonIndexOption
-    | indexTypeClause
 ;
 
 // These options are common for all index types.

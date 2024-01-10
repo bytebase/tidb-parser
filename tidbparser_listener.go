@@ -10,6 +10,24 @@ type TiDBParserListener interface {
 	// EnterSingleColumnDef is called when entering the singleColumnDef production.
 	EnterSingleColumnDef(c *SingleColumnDefContext)
 
+	// EnterSingleConstraint is called when entering the singleConstraint production.
+	EnterSingleConstraint(c *SingleConstraintContext)
+
+	// EnterConstraint is called when entering the constraint production.
+	EnterConstraint(c *ConstraintContext)
+
+	// EnterForeignKeyDef is called when entering the foreignKeyDef production.
+	EnterForeignKeyDef(c *ForeignKeyDefContext)
+
+	// EnterIndexDef is called when entering the indexDef production.
+	EnterIndexDef(c *IndexDefContext)
+
+	// EnterIndexOptionList is called when entering the indexOptionList production.
+	EnterIndexOptionList(c *IndexOptionListContext)
+
+	// EnterIndexOption is called when entering the indexOption production.
+	EnterIndexOption(c *IndexOptionContext)
+
 	// EnterColumnDef is called when entering the columnDef production.
 	EnterColumnDef(c *ColumnDefContext)
 
@@ -889,9 +907,6 @@ type TiDBParserListener interface {
 	// EnterIndexType is called when entering the indexType production.
 	EnterIndexType(c *IndexTypeContext)
 
-	// EnterIndexOption is called when entering the indexOption production.
-	EnterIndexOption(c *IndexOptionContext)
-
 	// EnterCommonIndexOption is called when entering the commonIndexOption production.
 	EnterCommonIndexOption(c *CommonIndexOptionContext)
 
@@ -1374,6 +1389,24 @@ type TiDBParserListener interface {
 
 	// ExitSingleColumnDef is called when exiting the singleColumnDef production.
 	ExitSingleColumnDef(c *SingleColumnDefContext)
+
+	// ExitSingleConstraint is called when exiting the singleConstraint production.
+	ExitSingleConstraint(c *SingleConstraintContext)
+
+	// ExitConstraint is called when exiting the constraint production.
+	ExitConstraint(c *ConstraintContext)
+
+	// ExitForeignKeyDef is called when exiting the foreignKeyDef production.
+	ExitForeignKeyDef(c *ForeignKeyDefContext)
+
+	// ExitIndexDef is called when exiting the indexDef production.
+	ExitIndexDef(c *IndexDefContext)
+
+	// ExitIndexOptionList is called when exiting the indexOptionList production.
+	ExitIndexOptionList(c *IndexOptionListContext)
+
+	// ExitIndexOption is called when exiting the indexOption production.
+	ExitIndexOption(c *IndexOptionContext)
 
 	// ExitColumnDef is called when exiting the columnDef production.
 	ExitColumnDef(c *ColumnDefContext)
@@ -2253,9 +2286,6 @@ type TiDBParserListener interface {
 
 	// ExitIndexType is called when exiting the indexType production.
 	ExitIndexType(c *IndexTypeContext)
-
-	// ExitIndexOption is called when exiting the indexOption production.
-	ExitIndexOption(c *IndexOptionContext)
 
 	// ExitCommonIndexOption is called when exiting the commonIndexOption production.
 	ExitCommonIndexOption(c *CommonIndexOptionContext)

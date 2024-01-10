@@ -11,6 +11,30 @@ func (v *BaseTiDBParserVisitor) VisitSingleColumnDef(ctx *SingleColumnDefContext
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseTiDBParserVisitor) VisitSingleConstraint(ctx *SingleConstraintContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitConstraint(ctx *ConstraintContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitForeignKeyDef(ctx *ForeignKeyDefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitIndexDef(ctx *IndexDefContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitIndexOptionList(ctx *IndexOptionListContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitIndexOption(ctx *IndexOptionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseTiDBParserVisitor) VisitColumnDef(ctx *ColumnDefContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -1180,10 +1204,6 @@ func (v *BaseTiDBParserVisitor) VisitKeyListVariants(ctx *KeyListVariantsContext
 }
 
 func (v *BaseTiDBParserVisitor) VisitIndexType(ctx *IndexTypeContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseTiDBParserVisitor) VisitIndexOption(ctx *IndexOptionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

@@ -10,6 +10,24 @@ type TiDBParserVisitor interface {
 	// Visit a parse tree produced by TiDBParser#singleColumnDef.
 	VisitSingleColumnDef(ctx *SingleColumnDefContext) interface{}
 
+	// Visit a parse tree produced by TiDBParser#singleConstraint.
+	VisitSingleConstraint(ctx *SingleConstraintContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#constraint.
+	VisitConstraint(ctx *ConstraintContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#foreignKeyDef.
+	VisitForeignKeyDef(ctx *ForeignKeyDefContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#indexDef.
+	VisitIndexDef(ctx *IndexDefContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#indexOptionList.
+	VisitIndexOptionList(ctx *IndexOptionListContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#indexOption.
+	VisitIndexOption(ctx *IndexOptionContext) interface{}
+
 	// Visit a parse tree produced by TiDBParser#columnDef.
 	VisitColumnDef(ctx *ColumnDefContext) interface{}
 
@@ -888,9 +906,6 @@ type TiDBParserVisitor interface {
 
 	// Visit a parse tree produced by TiDBParser#indexType.
 	VisitIndexType(ctx *IndexTypeContext) interface{}
-
-	// Visit a parse tree produced by TiDBParser#indexOption.
-	VisitIndexOption(ctx *IndexOptionContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#commonIndexOption.
 	VisitCommonIndexOption(ctx *CommonIndexOptionContext) interface{}

@@ -26,6 +26,42 @@ func (s *BaseTiDBParserListener) EnterSingleColumnDef(ctx *SingleColumnDefContex
 // ExitSingleColumnDef is called when production singleColumnDef is exited.
 func (s *BaseTiDBParserListener) ExitSingleColumnDef(ctx *SingleColumnDefContext) {}
 
+// EnterSingleConstraint is called when production singleConstraint is entered.
+func (s *BaseTiDBParserListener) EnterSingleConstraint(ctx *SingleConstraintContext) {}
+
+// ExitSingleConstraint is called when production singleConstraint is exited.
+func (s *BaseTiDBParserListener) ExitSingleConstraint(ctx *SingleConstraintContext) {}
+
+// EnterConstraint is called when production constraint is entered.
+func (s *BaseTiDBParserListener) EnterConstraint(ctx *ConstraintContext) {}
+
+// ExitConstraint is called when production constraint is exited.
+func (s *BaseTiDBParserListener) ExitConstraint(ctx *ConstraintContext) {}
+
+// EnterForeignKeyDef is called when production foreignKeyDef is entered.
+func (s *BaseTiDBParserListener) EnterForeignKeyDef(ctx *ForeignKeyDefContext) {}
+
+// ExitForeignKeyDef is called when production foreignKeyDef is exited.
+func (s *BaseTiDBParserListener) ExitForeignKeyDef(ctx *ForeignKeyDefContext) {}
+
+// EnterIndexDef is called when production indexDef is entered.
+func (s *BaseTiDBParserListener) EnterIndexDef(ctx *IndexDefContext) {}
+
+// ExitIndexDef is called when production indexDef is exited.
+func (s *BaseTiDBParserListener) ExitIndexDef(ctx *IndexDefContext) {}
+
+// EnterIndexOptionList is called when production indexOptionList is entered.
+func (s *BaseTiDBParserListener) EnterIndexOptionList(ctx *IndexOptionListContext) {}
+
+// ExitIndexOptionList is called when production indexOptionList is exited.
+func (s *BaseTiDBParserListener) ExitIndexOptionList(ctx *IndexOptionListContext) {}
+
+// EnterIndexOption is called when production indexOption is entered.
+func (s *BaseTiDBParserListener) EnterIndexOption(ctx *IndexOptionContext) {}
+
+// ExitIndexOption is called when production indexOption is exited.
+func (s *BaseTiDBParserListener) ExitIndexOption(ctx *IndexOptionContext) {}
+
 // EnterColumnDef is called when production columnDef is entered.
 func (s *BaseTiDBParserListener) EnterColumnDef(ctx *ColumnDefContext) {}
 
@@ -1815,12 +1851,6 @@ func (s *BaseTiDBParserListener) EnterIndexType(ctx *IndexTypeContext) {}
 
 // ExitIndexType is called when production indexType is exited.
 func (s *BaseTiDBParserListener) ExitIndexType(ctx *IndexTypeContext) {}
-
-// EnterIndexOption is called when production indexOption is entered.
-func (s *BaseTiDBParserListener) EnterIndexOption(ctx *IndexOptionContext) {}
-
-// ExitIndexOption is called when production indexOption is exited.
-func (s *BaseTiDBParserListener) ExitIndexOption(ctx *IndexOptionContext) {}
 
 // EnterCommonIndexOption is called when production commonIndexOption is entered.
 func (s *BaseTiDBParserListener) EnterCommonIndexOption(ctx *CommonIndexOptionContext) {}
