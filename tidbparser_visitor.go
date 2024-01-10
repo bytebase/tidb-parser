@@ -7,26 +7,38 @@ import "github.com/antlr4-go/antlr/v4"
 type TiDBParserVisitor interface {
 	antlr.ParseTreeVisitor
 
-	// Visit a parse tree produced by TiDBParser#singleColumnDef.
-	VisitSingleColumnDef(ctx *SingleColumnDefContext) interface{}
+	// Visit a parse tree produced by TiDBParser#singleCreateTable.
+	VisitSingleCreateTable(ctx *SingleCreateTableContext) interface{}
 
-	// Visit a parse tree produced by TiDBParser#singleConstraint.
-	VisitSingleConstraint(ctx *SingleConstraintContext) interface{}
+	// Visit a parse tree produced by TiDBParser#createTable.
+	VisitCreateTable(ctx *CreateTableContext) interface{}
 
-	// Visit a parse tree produced by TiDBParser#constraint.
-	VisitConstraint(ctx *ConstraintContext) interface{}
+	// Visit a parse tree produced by TiDBParser#duplicateAsQueryExpression.
+	VisitDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) interface{}
 
-	// Visit a parse tree produced by TiDBParser#foreignKeyDef.
-	VisitForeignKeyDef(ctx *ForeignKeyDefContext) interface{}
+	// Visit a parse tree produced by TiDBParser#queryExpressionOrParens.
+	VisitQueryExpressionOrParens(ctx *QueryExpressionOrParensContext) interface{}
 
-	// Visit a parse tree produced by TiDBParser#indexDef.
-	VisitIndexDef(ctx *IndexDefContext) interface{}
+	// Visit a parse tree produced by TiDBParser#tableElementList.
+	VisitTableElementList(ctx *TableElementListContext) interface{}
 
-	// Visit a parse tree produced by TiDBParser#indexOptionList.
-	VisitIndexOptionList(ctx *IndexOptionListContext) interface{}
+	// Visit a parse tree produced by TiDBParser#tableElement.
+	VisitTableElement(ctx *TableElementContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#tableConstraintDef.
+	VisitTableConstraintDef(ctx *TableConstraintDefContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#indexOption.
 	VisitIndexOption(ctx *IndexOptionContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#checkConstraint.
+	VisitCheckConstraint(ctx *CheckConstraintContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#indexNameAndType.
+	VisitIndexNameAndType(ctx *IndexNameAndTypeContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#temporaryOption.
+	VisitTemporaryOption(ctx *TemporaryOptionContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#columnDef.
 	VisitColumnDef(ctx *ColumnDefContext) interface{}

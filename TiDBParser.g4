@@ -7,35 +7,79 @@ options {
 
 //-------------------------- TiDB grammar -------------------------------------------------------------------------
 
-singleColumnDef:
-    columnDef COMMA_SYMBOL? EOF
+singleCreateTable:
+    createTable SEMICOLON_SYMBOL? EOF
 ;
 
-singleConstraint:
-    constraint COMMA_SYMBOL? EOF
+/* Don't support CREATE LIKE */
+createTable:
+    CREATE_SYMBOL temporaryOption? TABLE_SYMBOL ifNotExists? tableName (
+        (OPEN_PAR_SYMBOL tableElementList CLOSE_PAR_SYMBOL)? createTableOptions? partitionClause? duplicateAsQueryExpression?
+    )
 ;
 
-constraint:
-    indexDef
-    | foreignKeyDef
+duplicateAsQueryExpression:
+    (REPLACE_SYMBOL | IGNORE_SYMBOL)? AS_SYMBOL? queryExpressionOrParens
 ;
 
-foreignKeyDef:
-    constraintName? FOREIGN_SYMBOL KEY_SYMBOL indexName? keyList references
+queryExpressionOrParens:
+    queryExpression
+    | queryExpressionParens
 ;
 
-indexDef:
-    (INDEX_SYMBOL | KEY_SYMBOL) indexName keyListWithExpression indexOptionList?
+tableElementList:
+    tableElement (COMMA_SYMBOL tableElement)*
 ;
 
-indexOptionList:
-    indexOption+
+tableElement:
+    columnDef
+    | tableConstraintDef
+;
+
+tableConstraintDef:
+    type = (KEY_SYMBOL | INDEX_SYMBOL) indexNameAndType? keyListVariants indexOption*
+    | type = FULLTEXT_SYMBOL keyOrIndex? indexName? keyListVariants fulltextIndexOption*
+    | type = SPATIAL_SYMBOL keyOrIndex? indexName? keyListVariants spatialIndexOption*
+    | constraintName? (
+        (type = PRIMARY_SYMBOL KEY_SYMBOL | type = UNIQUE_SYMBOL keyOrIndex?) indexNameAndType? keyListVariants indexOption*
+        | type = FOREIGN_SYMBOL KEY_SYMBOL indexName? keyList references
+        | checkConstraint (constraintEnforcement)?
+    )
 ;
 
 indexOption:
-    COMMENT_SYMBOL textStringLiteral
-    | VISIBLE_SYMBOL
-    | INVISIBLE_SYMBOL
+    commonIndexOption
+    | indexTypeClause
+;
+
+checkConstraint:
+    CHECK_SYMBOL exprWithParentheses
+;
+
+/*
+  The syntax for defining an index is:
+
+    ... INDEX [index_name] [USING|TYPE] <index_type> ...
+
+  The problem is that whereas USING is a reserved word, TYPE is not. We can
+  still handle it if an index name is supplied, i.e.:
+
+    ... INDEX type TYPE <index_type> ...
+
+  here the index's name is unmbiguously 'type', but for this:
+
+    ... INDEX TYPE <index_type> ...
+
+  it's impossible to know what this actually mean - is 'type' the name or the
+  type? For this reason we accept the TYPE syntax only if a name is supplied.
+*/
+indexNameAndType:
+    indexName (USING_SYMBOL indexType)?
+    | indexName TYPE_SYMBOL indexType
+;
+
+temporaryOption:
+    GLOBAL_SYMBOL? TEMPORARY_SYMBOL
 ;
 
 columnDef:

@@ -7,26 +7,38 @@ import "github.com/antlr4-go/antlr/v4"
 type TiDBParserListener interface {
 	antlr.ParseTreeListener
 
-	// EnterSingleColumnDef is called when entering the singleColumnDef production.
-	EnterSingleColumnDef(c *SingleColumnDefContext)
+	// EnterSingleCreateTable is called when entering the singleCreateTable production.
+	EnterSingleCreateTable(c *SingleCreateTableContext)
 
-	// EnterSingleConstraint is called when entering the singleConstraint production.
-	EnterSingleConstraint(c *SingleConstraintContext)
+	// EnterCreateTable is called when entering the createTable production.
+	EnterCreateTable(c *CreateTableContext)
 
-	// EnterConstraint is called when entering the constraint production.
-	EnterConstraint(c *ConstraintContext)
+	// EnterDuplicateAsQueryExpression is called when entering the duplicateAsQueryExpression production.
+	EnterDuplicateAsQueryExpression(c *DuplicateAsQueryExpressionContext)
 
-	// EnterForeignKeyDef is called when entering the foreignKeyDef production.
-	EnterForeignKeyDef(c *ForeignKeyDefContext)
+	// EnterQueryExpressionOrParens is called when entering the queryExpressionOrParens production.
+	EnterQueryExpressionOrParens(c *QueryExpressionOrParensContext)
 
-	// EnterIndexDef is called when entering the indexDef production.
-	EnterIndexDef(c *IndexDefContext)
+	// EnterTableElementList is called when entering the tableElementList production.
+	EnterTableElementList(c *TableElementListContext)
 
-	// EnterIndexOptionList is called when entering the indexOptionList production.
-	EnterIndexOptionList(c *IndexOptionListContext)
+	// EnterTableElement is called when entering the tableElement production.
+	EnterTableElement(c *TableElementContext)
+
+	// EnterTableConstraintDef is called when entering the tableConstraintDef production.
+	EnterTableConstraintDef(c *TableConstraintDefContext)
 
 	// EnterIndexOption is called when entering the indexOption production.
 	EnterIndexOption(c *IndexOptionContext)
+
+	// EnterCheckConstraint is called when entering the checkConstraint production.
+	EnterCheckConstraint(c *CheckConstraintContext)
+
+	// EnterIndexNameAndType is called when entering the indexNameAndType production.
+	EnterIndexNameAndType(c *IndexNameAndTypeContext)
+
+	// EnterTemporaryOption is called when entering the temporaryOption production.
+	EnterTemporaryOption(c *TemporaryOptionContext)
 
 	// EnterColumnDef is called when entering the columnDef production.
 	EnterColumnDef(c *ColumnDefContext)
@@ -1387,26 +1399,38 @@ type TiDBParserListener interface {
 	// EnterRoleOrLabelKeyword is called when entering the roleOrLabelKeyword production.
 	EnterRoleOrLabelKeyword(c *RoleOrLabelKeywordContext)
 
-	// ExitSingleColumnDef is called when exiting the singleColumnDef production.
-	ExitSingleColumnDef(c *SingleColumnDefContext)
+	// ExitSingleCreateTable is called when exiting the singleCreateTable production.
+	ExitSingleCreateTable(c *SingleCreateTableContext)
 
-	// ExitSingleConstraint is called when exiting the singleConstraint production.
-	ExitSingleConstraint(c *SingleConstraintContext)
+	// ExitCreateTable is called when exiting the createTable production.
+	ExitCreateTable(c *CreateTableContext)
 
-	// ExitConstraint is called when exiting the constraint production.
-	ExitConstraint(c *ConstraintContext)
+	// ExitDuplicateAsQueryExpression is called when exiting the duplicateAsQueryExpression production.
+	ExitDuplicateAsQueryExpression(c *DuplicateAsQueryExpressionContext)
 
-	// ExitForeignKeyDef is called when exiting the foreignKeyDef production.
-	ExitForeignKeyDef(c *ForeignKeyDefContext)
+	// ExitQueryExpressionOrParens is called when exiting the queryExpressionOrParens production.
+	ExitQueryExpressionOrParens(c *QueryExpressionOrParensContext)
 
-	// ExitIndexDef is called when exiting the indexDef production.
-	ExitIndexDef(c *IndexDefContext)
+	// ExitTableElementList is called when exiting the tableElementList production.
+	ExitTableElementList(c *TableElementListContext)
 
-	// ExitIndexOptionList is called when exiting the indexOptionList production.
-	ExitIndexOptionList(c *IndexOptionListContext)
+	// ExitTableElement is called when exiting the tableElement production.
+	ExitTableElement(c *TableElementContext)
+
+	// ExitTableConstraintDef is called when exiting the tableConstraintDef production.
+	ExitTableConstraintDef(c *TableConstraintDefContext)
 
 	// ExitIndexOption is called when exiting the indexOption production.
 	ExitIndexOption(c *IndexOptionContext)
+
+	// ExitCheckConstraint is called when exiting the checkConstraint production.
+	ExitCheckConstraint(c *CheckConstraintContext)
+
+	// ExitIndexNameAndType is called when exiting the indexNameAndType production.
+	ExitIndexNameAndType(c *IndexNameAndTypeContext)
+
+	// ExitTemporaryOption is called when exiting the temporaryOption production.
+	ExitTemporaryOption(c *TemporaryOptionContext)
 
 	// ExitColumnDef is called when exiting the columnDef production.
 	ExitColumnDef(c *ColumnDefContext)

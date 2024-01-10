@@ -20,47 +20,73 @@ func (s *BaseTiDBParserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseTiDBParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterSingleColumnDef is called when production singleColumnDef is entered.
-func (s *BaseTiDBParserListener) EnterSingleColumnDef(ctx *SingleColumnDefContext) {}
+// EnterSingleCreateTable is called when production singleCreateTable is entered.
+func (s *BaseTiDBParserListener) EnterSingleCreateTable(ctx *SingleCreateTableContext) {}
 
-// ExitSingleColumnDef is called when production singleColumnDef is exited.
-func (s *BaseTiDBParserListener) ExitSingleColumnDef(ctx *SingleColumnDefContext) {}
+// ExitSingleCreateTable is called when production singleCreateTable is exited.
+func (s *BaseTiDBParserListener) ExitSingleCreateTable(ctx *SingleCreateTableContext) {}
 
-// EnterSingleConstraint is called when production singleConstraint is entered.
-func (s *BaseTiDBParserListener) EnterSingleConstraint(ctx *SingleConstraintContext) {}
+// EnterCreateTable is called when production createTable is entered.
+func (s *BaseTiDBParserListener) EnterCreateTable(ctx *CreateTableContext) {}
 
-// ExitSingleConstraint is called when production singleConstraint is exited.
-func (s *BaseTiDBParserListener) ExitSingleConstraint(ctx *SingleConstraintContext) {}
+// ExitCreateTable is called when production createTable is exited.
+func (s *BaseTiDBParserListener) ExitCreateTable(ctx *CreateTableContext) {}
 
-// EnterConstraint is called when production constraint is entered.
-func (s *BaseTiDBParserListener) EnterConstraint(ctx *ConstraintContext) {}
+// EnterDuplicateAsQueryExpression is called when production duplicateAsQueryExpression is entered.
+func (s *BaseTiDBParserListener) EnterDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) {
+}
 
-// ExitConstraint is called when production constraint is exited.
-func (s *BaseTiDBParserListener) ExitConstraint(ctx *ConstraintContext) {}
+// ExitDuplicateAsQueryExpression is called when production duplicateAsQueryExpression is exited.
+func (s *BaseTiDBParserListener) ExitDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) {
+}
 
-// EnterForeignKeyDef is called when production foreignKeyDef is entered.
-func (s *BaseTiDBParserListener) EnterForeignKeyDef(ctx *ForeignKeyDefContext) {}
+// EnterQueryExpressionOrParens is called when production queryExpressionOrParens is entered.
+func (s *BaseTiDBParserListener) EnterQueryExpressionOrParens(ctx *QueryExpressionOrParensContext) {}
 
-// ExitForeignKeyDef is called when production foreignKeyDef is exited.
-func (s *BaseTiDBParserListener) ExitForeignKeyDef(ctx *ForeignKeyDefContext) {}
+// ExitQueryExpressionOrParens is called when production queryExpressionOrParens is exited.
+func (s *BaseTiDBParserListener) ExitQueryExpressionOrParens(ctx *QueryExpressionOrParensContext) {}
 
-// EnterIndexDef is called when production indexDef is entered.
-func (s *BaseTiDBParserListener) EnterIndexDef(ctx *IndexDefContext) {}
+// EnterTableElementList is called when production tableElementList is entered.
+func (s *BaseTiDBParserListener) EnterTableElementList(ctx *TableElementListContext) {}
 
-// ExitIndexDef is called when production indexDef is exited.
-func (s *BaseTiDBParserListener) ExitIndexDef(ctx *IndexDefContext) {}
+// ExitTableElementList is called when production tableElementList is exited.
+func (s *BaseTiDBParserListener) ExitTableElementList(ctx *TableElementListContext) {}
 
-// EnterIndexOptionList is called when production indexOptionList is entered.
-func (s *BaseTiDBParserListener) EnterIndexOptionList(ctx *IndexOptionListContext) {}
+// EnterTableElement is called when production tableElement is entered.
+func (s *BaseTiDBParserListener) EnterTableElement(ctx *TableElementContext) {}
 
-// ExitIndexOptionList is called when production indexOptionList is exited.
-func (s *BaseTiDBParserListener) ExitIndexOptionList(ctx *IndexOptionListContext) {}
+// ExitTableElement is called when production tableElement is exited.
+func (s *BaseTiDBParserListener) ExitTableElement(ctx *TableElementContext) {}
+
+// EnterTableConstraintDef is called when production tableConstraintDef is entered.
+func (s *BaseTiDBParserListener) EnterTableConstraintDef(ctx *TableConstraintDefContext) {}
+
+// ExitTableConstraintDef is called when production tableConstraintDef is exited.
+func (s *BaseTiDBParserListener) ExitTableConstraintDef(ctx *TableConstraintDefContext) {}
 
 // EnterIndexOption is called when production indexOption is entered.
 func (s *BaseTiDBParserListener) EnterIndexOption(ctx *IndexOptionContext) {}
 
 // ExitIndexOption is called when production indexOption is exited.
 func (s *BaseTiDBParserListener) ExitIndexOption(ctx *IndexOptionContext) {}
+
+// EnterCheckConstraint is called when production checkConstraint is entered.
+func (s *BaseTiDBParserListener) EnterCheckConstraint(ctx *CheckConstraintContext) {}
+
+// ExitCheckConstraint is called when production checkConstraint is exited.
+func (s *BaseTiDBParserListener) ExitCheckConstraint(ctx *CheckConstraintContext) {}
+
+// EnterIndexNameAndType is called when production indexNameAndType is entered.
+func (s *BaseTiDBParserListener) EnterIndexNameAndType(ctx *IndexNameAndTypeContext) {}
+
+// ExitIndexNameAndType is called when production indexNameAndType is exited.
+func (s *BaseTiDBParserListener) ExitIndexNameAndType(ctx *IndexNameAndTypeContext) {}
+
+// EnterTemporaryOption is called when production temporaryOption is entered.
+func (s *BaseTiDBParserListener) EnterTemporaryOption(ctx *TemporaryOptionContext) {}
+
+// ExitTemporaryOption is called when production temporaryOption is exited.
+func (s *BaseTiDBParserListener) ExitTemporaryOption(ctx *TemporaryOptionContext) {}
 
 // EnterColumnDef is called when production columnDef is entered.
 func (s *BaseTiDBParserListener) EnterColumnDef(ctx *ColumnDefContext) {}

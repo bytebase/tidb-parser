@@ -7,31 +7,47 @@ type BaseTiDBParserVisitor struct {
 	*antlr.BaseParseTreeVisitor
 }
 
-func (v *BaseTiDBParserVisitor) VisitSingleColumnDef(ctx *SingleColumnDefContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitSingleCreateTable(ctx *SingleCreateTableContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseTiDBParserVisitor) VisitSingleConstraint(ctx *SingleConstraintContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitCreateTable(ctx *CreateTableContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseTiDBParserVisitor) VisitConstraint(ctx *ConstraintContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseTiDBParserVisitor) VisitForeignKeyDef(ctx *ForeignKeyDefContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitQueryExpressionOrParens(ctx *QueryExpressionOrParensContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseTiDBParserVisitor) VisitIndexDef(ctx *IndexDefContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitTableElementList(ctx *TableElementListContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseTiDBParserVisitor) VisitIndexOptionList(ctx *IndexOptionListContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitTableElement(ctx *TableElementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitTableConstraintDef(ctx *TableConstraintDefContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseTiDBParserVisitor) VisitIndexOption(ctx *IndexOptionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitCheckConstraint(ctx *CheckConstraintContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitIndexNameAndType(ctx *IndexNameAndTypeContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitTemporaryOption(ctx *TemporaryOptionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
