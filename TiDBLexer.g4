@@ -1132,7 +1132,7 @@ fragment DOUBLE_QUOTE: '"';
 BACK_TICK_QUOTED_ID: BACK_TICK (('\\')? .)*? BACK_TICK;
 
 DOUBLE_QUOTED_TEXT: (
-        DOUBLE_QUOTE (('\\' .)? .)*? DOUBLE_QUOTE
+        DOUBLE_QUOTE (('\\')? .)*? DOUBLE_QUOTE
     )+
 ;
 
