@@ -11,11 +11,52 @@ singleCreateTable:
     createTable SEMICOLON_SYMBOL? EOF
 ;
 
+createStatement:
+    CREATE_SYMBOL (
+        createTable
+        |  createView        
+    )
+;
+
 /* Don't support CREATE LIKE */
 createTable:
-    CREATE_SYMBOL temporaryOption? TABLE_SYMBOL ifNotExists? tableName (
+    temporaryOption? TABLE_SYMBOL ifNotExists? tableName (
         (OPEN_PAR_SYMBOL tableElementList CLOSE_PAR_SYMBOL)? createTableOptions? partitionClause? duplicateAsQueryExpression?
     )
+;
+
+createView:
+    viewReplaceOrAlgorithm? definerClause? viewSuid? VIEW_SYMBOL viewName viewTail;
+
+viewReplaceOrAlgorithm:
+    OR_SYMBOL REPLACE_SYMBOL viewAlgorithm?
+    | viewAlgorithm
+;
+
+viewAlgorithm:
+    ALGORITHM_SYMBOL EQUAL_OPERATOR algorithm = (
+        UNDEFINED_SYMBOL
+        | MERGE_SYMBOL
+        | TEMPTABLE_SYMBOL
+    )
+;
+
+viewSuid:
+    SQL_SYMBOL SECURITY_SYMBOL (DEFINER_SYMBOL | INVOKER_SYMBOL)
+;
+
+// This is not the full view_tail from sql_yacc.yy as we have either a view name or a view reference,
+// depending on whether we come from createView or alterView. Everything until this difference is duplicated in those rules.
+viewTail:
+    columnInternalRefList? AS_SYMBOL viewSelect
+;
+
+viewSelect:
+    queryExpressionOrParens viewCheckOption?
+;
+
+viewCheckOption:
+    WITH_SYMBOL (CASCADED_SYMBOL | LOCAL_SYMBOL)? CHECK_SYMBOL OPTION_SYMBOL
 ;
 
 duplicateAsQueryExpression:
