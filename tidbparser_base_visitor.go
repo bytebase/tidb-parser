@@ -1,4 +1,4 @@
-// Code generated from TiDBParser.g4 by ANTLR 4.13.0. DO NOT EDIT.
+// Code generated from TiDBParser.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // TiDBParser
 import "github.com/antlr4-go/antlr/v4"
@@ -7,11 +7,51 @@ type BaseTiDBParserVisitor struct {
 	*antlr.BaseParseTreeVisitor
 }
 
-func (v *BaseTiDBParserVisitor) VisitSingleCreateTable(ctx *SingleCreateTableContext) interface{} {
+func (v *BaseTiDBParserVisitor) VisitScript(ctx *ScriptContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitQuery(ctx *QueryContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitSimpleStatement(ctx *SimpleStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitCreateStatement(ctx *CreateStatementContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseTiDBParserVisitor) VisitCreateTable(ctx *CreateTableContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitCreateView(ctx *CreateViewContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewAlgorithm(ctx *ViewAlgorithmContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewSuid(ctx *ViewSuidContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewTail(ctx *ViewTailContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewSelect(ctx *ViewSelectContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitViewCheckOption(ctx *ViewCheckOptionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

@@ -1,4 +1,4 @@
-// Code generated from TiDBParser.g4 by ANTLR 4.13.0. DO NOT EDIT.
+// Code generated from TiDBParser.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // TiDBParser
 import "github.com/antlr4-go/antlr/v4"
@@ -7,11 +7,41 @@ import "github.com/antlr4-go/antlr/v4"
 type TiDBParserVisitor interface {
 	antlr.ParseTreeVisitor
 
-	// Visit a parse tree produced by TiDBParser#singleCreateTable.
-	VisitSingleCreateTable(ctx *SingleCreateTableContext) interface{}
+	// Visit a parse tree produced by TiDBParser#script.
+	VisitScript(ctx *ScriptContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#query.
+	VisitQuery(ctx *QueryContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#simpleStatement.
+	VisitSimpleStatement(ctx *SimpleStatementContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#createStatement.
+	VisitCreateStatement(ctx *CreateStatementContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#createTable.
 	VisitCreateTable(ctx *CreateTableContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#createView.
+	VisitCreateView(ctx *CreateViewContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewReplaceOrAlgorithm.
+	VisitViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewAlgorithm.
+	VisitViewAlgorithm(ctx *ViewAlgorithmContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewSuid.
+	VisitViewSuid(ctx *ViewSuidContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewTail.
+	VisitViewTail(ctx *ViewTailContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewSelect.
+	VisitViewSelect(ctx *ViewSelectContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#viewCheckOption.
+	VisitViewCheckOption(ctx *ViewCheckOptionContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#duplicateAsQueryExpression.
 	VisitDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) interface{}
