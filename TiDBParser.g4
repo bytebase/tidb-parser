@@ -7,9 +7,15 @@ options {
 
 //-------------------------- TiDB grammar -------------------------------------------------------------------------
 
-singleCreateTable: createTable SEMICOLON_SYMBOL? EOF;
+script: (query | SEMICOLON_SYMBOL)* EOF;
 
-createStatement: CREATE_SYMBOL ( createTable | createView);
+query: (simpleStatement | beginWork) SEMICOLON_SYMBOL;
+
+simpleStatement:
+	// DDL
+	createStatement;
+
+createStatement: CREATE_SYMBOL ( | createTable | createView);
 
 /* Don't support CREATE LIKE */
 createTable:
@@ -358,7 +364,7 @@ tableReference: (
 		// Note: we have also a tableRef rule for identifiers that reference a table anywhere.
 		tableFactor
 		| OPEN_CURLY_SYMBOL (identifier | OJ_SYMBOL) escapedTableReference CLOSE_CURLY_SYMBOL
-			// ODBC syntax
+		// ODBC syntax
 	) joinedTable*;
 
 escapedTableReference: tableFactor joinedTable*;
@@ -496,8 +502,7 @@ transactionStatement:
 	START_SYMBOL TRANSACTION_SYMBOL transactionCharacteristic*
 	| COMMIT_SYMBOL WORK_SYMBOL? (
 		AND_SYMBOL NO_SYMBOL? CHAIN_SYMBOL
-	)? (NO_SYMBOL? RELEASE_SYMBOL)?
-	; // SET TRANSACTION is part of setStatement.
+	)? (NO_SYMBOL? RELEASE_SYMBOL)?; // SET TRANSACTION is part of setStatement.
 
 // BEGIN WORK is separated from transactional statements as it must not appear as part of a stored program.
 beginWork: BEGIN_SYMBOL WORK_SYMBOL?;
@@ -531,7 +536,7 @@ lockItem: tableRef tableAlias? lockOption;
 
 lockOption:
 	READ_SYMBOL LOCAL_SYMBOL?
-	| LOW_PRIORITY_SYMBOL? WRITE_SYMBOL ; // low priority deprecated since 5.7
+	| LOW_PRIORITY_SYMBOL? WRITE_SYMBOL; // low priority deprecated since 5.7
 
 xaStatement:
 	XA_SYMBOL (
@@ -608,7 +613,7 @@ masterOption:
 	| MASTER_SSL_CRL_SYMBOL EQUAL_OPERATOR textLiteral
 	| MASTER_SSL_CRLPATH_SYMBOL EQUAL_OPERATOR textStringNoLinebreak
 	| MASTER_PUBLIC_KEY_PATH_SYMBOL EQUAL_OPERATOR textStringNoLinebreak
-		// Conditionally set in the lexer.
+	// Conditionally set in the lexer.
 	| GET_MASTER_PUBLIC_KEY_SYMBOL EQUAL_OPERATOR ulong_number // Conditionally set in the lexer.
 	| MASTER_HEARTBEAT_PERIOD_SYMBOL EQUAL_OPERATOR ulong_number
 	| IGNORE_SERVER_IDS_SYMBOL EQUAL_OPERATOR serverIdList
@@ -660,9 +665,8 @@ filterStringList:
 		COMMA_SYMBOL filterWildDbTableString
 	)*;
 
-filterWildDbTableString:
-	textStringNoLinebreak
-		; // sql_yacc.yy checks for the existance of at least one dot char in the string.
+filterWildDbTableString: textStringNoLinebreak;
+// sql_yacc.yy checks for the existance of at least one dot char in the string.
 
 filterDbPairList:
 	schemaIdentifierPair (COMMA_SYMBOL schemaIdentifierPair)*;
@@ -1517,7 +1521,7 @@ substringFunction:
 
 functionCall:
 	pureIdentifier OPEN_PAR_SYMBOL udfExprList? CLOSE_PAR_SYMBOL // For both UDF + other functions.
-	| qualifiedIdentifier OPEN_PAR_SYMBOL exprList? CLOSE_PAR_SYMBOL ; // Other functions only.
+	| qualifiedIdentifier OPEN_PAR_SYMBOL exprList? CLOSE_PAR_SYMBOL; // Other functions only.
 
 searchJsonFunction:
 	JSON_VALUE_SYMBOL OPEN_PAR_SYMBOL (
@@ -1576,7 +1580,7 @@ charset: CHAR_SYMBOL SET_SYMBOL | CHARSET_SYMBOL;
 
 notRule:
 	NOT_SYMBOL
-	| NOT2_SYMBOL ; // A NOT with a different (higher) operator precedence.
+	| NOT2_SYMBOL; // A NOT with a different (higher) operator precedence.
 
 not2Rule: LOGICAL_NOT_OPERATOR | NOT2_SYMBOL;
 
@@ -2096,7 +2100,7 @@ eventName: qualifiedIdentifier;
 eventRef: qualifiedIdentifier;
 
 udfName:
-		// UDFs are referenced at the same places as any other function. So, no dedicated *_ref here.
+	// UDFs are referenced at the same places as any other function. So, no dedicated *_ref here.
 	identifier;
 
 serverName: textOrIdentifier;
@@ -2240,7 +2244,7 @@ numLiteral:
 boolLiteral: TRUE_SYMBOL | FALSE_SYMBOL;
 
 nullLiteral:
-		// In sql_yacc.cc both 'NULL' and '\N' are mapped to NULL_SYM (which is our nullLiteral).
+	// In sql_yacc.cc both 'NULL' and '\N' are mapped to NULL_SYM (which is our nullLiteral).
 	NULL_SYMBOL
 	| NULL2_SYMBOL;
 
@@ -2264,7 +2268,7 @@ roleIdentifierOrText: roleIdentifier | textStringLiteral;
 
 sizeNumber:
 	real_ulonglong_number
-	| pureIdentifier ; // Something like 10G. Semantic check needed for validity.
+	| pureIdentifier; // Something like 10G. Semantic check needed for validity.
 
 parentheses: OPEN_PAR_SYMBOL CLOSE_PAR_SYMBOL;
 
@@ -3164,7 +3168,7 @@ roleOrLabelKeyword:
 		| REPLICATE_WILD_IGNORE_TABLE_SYMBOL
 		| REPLICATE_REWRITE_DB_SYMBOL
 		| USER_RESOURCES_SYMBOL
-			// Placed like in the server grammar where it is named just RESOURCES.
+		// Placed like in the server grammar where it is named just RESOURCES.
 		| RESPECT_SYMBOL // Conditionally set in the lexer.
 		| RESUME_SYMBOL
 		| RETAIN_SYMBOL // Conditionally set in the lexer.
