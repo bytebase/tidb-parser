@@ -1,4 +1,4 @@
-// Code generated from TiDBParser.g4 by ANTLR 4.13.0. DO NOT EDIT.
+// Code generated from TiDBParser.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // TiDBParser
 import "github.com/antlr4-go/antlr/v4"
@@ -20,17 +20,77 @@ func (s *BaseTiDBParserListener) EnterEveryRule(ctx antlr.ParserRuleContext) {}
 // ExitEveryRule is called when any rule is exited.
 func (s *BaseTiDBParserListener) ExitEveryRule(ctx antlr.ParserRuleContext) {}
 
-// EnterSingleCreateTable is called when production singleCreateTable is entered.
-func (s *BaseTiDBParserListener) EnterSingleCreateTable(ctx *SingleCreateTableContext) {}
+// EnterScript is called when production script is entered.
+func (s *BaseTiDBParserListener) EnterScript(ctx *ScriptContext) {}
 
-// ExitSingleCreateTable is called when production singleCreateTable is exited.
-func (s *BaseTiDBParserListener) ExitSingleCreateTable(ctx *SingleCreateTableContext) {}
+// ExitScript is called when production script is exited.
+func (s *BaseTiDBParserListener) ExitScript(ctx *ScriptContext) {}
+
+// EnterQuery is called when production query is entered.
+func (s *BaseTiDBParserListener) EnterQuery(ctx *QueryContext) {}
+
+// ExitQuery is called when production query is exited.
+func (s *BaseTiDBParserListener) ExitQuery(ctx *QueryContext) {}
+
+// EnterSimpleStatement is called when production simpleStatement is entered.
+func (s *BaseTiDBParserListener) EnterSimpleStatement(ctx *SimpleStatementContext) {}
+
+// ExitSimpleStatement is called when production simpleStatement is exited.
+func (s *BaseTiDBParserListener) ExitSimpleStatement(ctx *SimpleStatementContext) {}
+
+// EnterCreateStatement is called when production createStatement is entered.
+func (s *BaseTiDBParserListener) EnterCreateStatement(ctx *CreateStatementContext) {}
+
+// ExitCreateStatement is called when production createStatement is exited.
+func (s *BaseTiDBParserListener) ExitCreateStatement(ctx *CreateStatementContext) {}
 
 // EnterCreateTable is called when production createTable is entered.
 func (s *BaseTiDBParserListener) EnterCreateTable(ctx *CreateTableContext) {}
 
 // ExitCreateTable is called when production createTable is exited.
 func (s *BaseTiDBParserListener) ExitCreateTable(ctx *CreateTableContext) {}
+
+// EnterCreateView is called when production createView is entered.
+func (s *BaseTiDBParserListener) EnterCreateView(ctx *CreateViewContext) {}
+
+// ExitCreateView is called when production createView is exited.
+func (s *BaseTiDBParserListener) ExitCreateView(ctx *CreateViewContext) {}
+
+// EnterViewReplaceOrAlgorithm is called when production viewReplaceOrAlgorithm is entered.
+func (s *BaseTiDBParserListener) EnterViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) {}
+
+// ExitViewReplaceOrAlgorithm is called when production viewReplaceOrAlgorithm is exited.
+func (s *BaseTiDBParserListener) ExitViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) {}
+
+// EnterViewAlgorithm is called when production viewAlgorithm is entered.
+func (s *BaseTiDBParserListener) EnterViewAlgorithm(ctx *ViewAlgorithmContext) {}
+
+// ExitViewAlgorithm is called when production viewAlgorithm is exited.
+func (s *BaseTiDBParserListener) ExitViewAlgorithm(ctx *ViewAlgorithmContext) {}
+
+// EnterViewSuid is called when production viewSuid is entered.
+func (s *BaseTiDBParserListener) EnterViewSuid(ctx *ViewSuidContext) {}
+
+// ExitViewSuid is called when production viewSuid is exited.
+func (s *BaseTiDBParserListener) ExitViewSuid(ctx *ViewSuidContext) {}
+
+// EnterViewTail is called when production viewTail is entered.
+func (s *BaseTiDBParserListener) EnterViewTail(ctx *ViewTailContext) {}
+
+// ExitViewTail is called when production viewTail is exited.
+func (s *BaseTiDBParserListener) ExitViewTail(ctx *ViewTailContext) {}
+
+// EnterViewSelect is called when production viewSelect is entered.
+func (s *BaseTiDBParserListener) EnterViewSelect(ctx *ViewSelectContext) {}
+
+// ExitViewSelect is called when production viewSelect is exited.
+func (s *BaseTiDBParserListener) ExitViewSelect(ctx *ViewSelectContext) {}
+
+// EnterViewCheckOption is called when production viewCheckOption is entered.
+func (s *BaseTiDBParserListener) EnterViewCheckOption(ctx *ViewCheckOptionContext) {}
+
+// ExitViewCheckOption is called when production viewCheckOption is exited.
+func (s *BaseTiDBParserListener) ExitViewCheckOption(ctx *ViewCheckOptionContext) {}
 
 // EnterDuplicateAsQueryExpression is called when production duplicateAsQueryExpression is entered.
 func (s *BaseTiDBParserListener) EnterDuplicateAsQueryExpression(ctx *DuplicateAsQueryExpressionContext) {

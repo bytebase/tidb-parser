@@ -15,7 +15,7 @@ simpleStatement:
 	// DDL
 	createStatement;
 
-createStatement: CREATE_SYMBOL ( | createTable | createView);
+createStatement: CREATE_SYMBOL ( createTable | createView);
 
 /* Don't support CREATE LIKE */
 createTable:

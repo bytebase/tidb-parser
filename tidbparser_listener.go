@@ -1,4 +1,4 @@
-// Code generated from TiDBParser.g4 by ANTLR 4.13.0. DO NOT EDIT.
+// Code generated from TiDBParser.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package parser // TiDBParser
 import "github.com/antlr4-go/antlr/v4"
@@ -7,11 +7,41 @@ import "github.com/antlr4-go/antlr/v4"
 type TiDBParserListener interface {
 	antlr.ParseTreeListener
 
-	// EnterSingleCreateTable is called when entering the singleCreateTable production.
-	EnterSingleCreateTable(c *SingleCreateTableContext)
+	// EnterScript is called when entering the script production.
+	EnterScript(c *ScriptContext)
+
+	// EnterQuery is called when entering the query production.
+	EnterQuery(c *QueryContext)
+
+	// EnterSimpleStatement is called when entering the simpleStatement production.
+	EnterSimpleStatement(c *SimpleStatementContext)
+
+	// EnterCreateStatement is called when entering the createStatement production.
+	EnterCreateStatement(c *CreateStatementContext)
 
 	// EnterCreateTable is called when entering the createTable production.
 	EnterCreateTable(c *CreateTableContext)
+
+	// EnterCreateView is called when entering the createView production.
+	EnterCreateView(c *CreateViewContext)
+
+	// EnterViewReplaceOrAlgorithm is called when entering the viewReplaceOrAlgorithm production.
+	EnterViewReplaceOrAlgorithm(c *ViewReplaceOrAlgorithmContext)
+
+	// EnterViewAlgorithm is called when entering the viewAlgorithm production.
+	EnterViewAlgorithm(c *ViewAlgorithmContext)
+
+	// EnterViewSuid is called when entering the viewSuid production.
+	EnterViewSuid(c *ViewSuidContext)
+
+	// EnterViewTail is called when entering the viewTail production.
+	EnterViewTail(c *ViewTailContext)
+
+	// EnterViewSelect is called when entering the viewSelect production.
+	EnterViewSelect(c *ViewSelectContext)
+
+	// EnterViewCheckOption is called when entering the viewCheckOption production.
+	EnterViewCheckOption(c *ViewCheckOptionContext)
 
 	// EnterDuplicateAsQueryExpression is called when entering the duplicateAsQueryExpression production.
 	EnterDuplicateAsQueryExpression(c *DuplicateAsQueryExpressionContext)
@@ -1399,11 +1429,41 @@ type TiDBParserListener interface {
 	// EnterRoleOrLabelKeyword is called when entering the roleOrLabelKeyword production.
 	EnterRoleOrLabelKeyword(c *RoleOrLabelKeywordContext)
 
-	// ExitSingleCreateTable is called when exiting the singleCreateTable production.
-	ExitSingleCreateTable(c *SingleCreateTableContext)
+	// ExitScript is called when exiting the script production.
+	ExitScript(c *ScriptContext)
+
+	// ExitQuery is called when exiting the query production.
+	ExitQuery(c *QueryContext)
+
+	// ExitSimpleStatement is called when exiting the simpleStatement production.
+	ExitSimpleStatement(c *SimpleStatementContext)
+
+	// ExitCreateStatement is called when exiting the createStatement production.
+	ExitCreateStatement(c *CreateStatementContext)
 
 	// ExitCreateTable is called when exiting the createTable production.
 	ExitCreateTable(c *CreateTableContext)
+
+	// ExitCreateView is called when exiting the createView production.
+	ExitCreateView(c *CreateViewContext)
+
+	// ExitViewReplaceOrAlgorithm is called when exiting the viewReplaceOrAlgorithm production.
+	ExitViewReplaceOrAlgorithm(c *ViewReplaceOrAlgorithmContext)
+
+	// ExitViewAlgorithm is called when exiting the viewAlgorithm production.
+	ExitViewAlgorithm(c *ViewAlgorithmContext)
+
+	// ExitViewSuid is called when exiting the viewSuid production.
+	ExitViewSuid(c *ViewSuidContext)
+
+	// ExitViewTail is called when exiting the viewTail production.
+	ExitViewTail(c *ViewTailContext)
+
+	// ExitViewSelect is called when exiting the viewSelect production.
+	ExitViewSelect(c *ViewSelectContext)
+
+	// ExitViewCheckOption is called when exiting the viewCheckOption production.
+	ExitViewCheckOption(c *ViewCheckOptionContext)
 
 	// ExitDuplicateAsQueryExpression is called when exiting the duplicateAsQueryExpression production.
 	ExitDuplicateAsQueryExpression(c *DuplicateAsQueryExpressionContext)
