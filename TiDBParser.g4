@@ -13,9 +13,12 @@ query: (simpleStatement | beginWork) SEMICOLON_SYMBOL;
 
 simpleStatement:
 	// DDL
-	createStatement;
+	createStatement
+	| dropStatement;
 
 createStatement: CREATE_SYMBOL ( createTable | createView);
+
+dropStatement: DROP_SYMBOL ( dropView);
 
 /* Don't support CREATE LIKE */
 createTable:
@@ -26,6 +29,12 @@ createTable:
 
 createView:
 	viewReplaceOrAlgorithm? definerClause? viewSuid? VIEW_SYMBOL viewName viewTail;
+
+dropView:
+	VIEW_SYMBOL ifExists? viewRefList (
+		RESTRICT_SYMBOL
+		| CASCADE_SYMBOL
+	)?;
 
 viewReplaceOrAlgorithm:
 	OR_SYMBOL REPLACE_SYMBOL viewAlgorithm?

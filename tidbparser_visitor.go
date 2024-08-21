@@ -19,11 +19,17 @@ type TiDBParserVisitor interface {
 	// Visit a parse tree produced by TiDBParser#createStatement.
 	VisitCreateStatement(ctx *CreateStatementContext) interface{}
 
+	// Visit a parse tree produced by TiDBParser#dropStatement.
+	VisitDropStatement(ctx *DropStatementContext) interface{}
+
 	// Visit a parse tree produced by TiDBParser#createTable.
 	VisitCreateTable(ctx *CreateTableContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#createView.
 	VisitCreateView(ctx *CreateViewContext) interface{}
+
+	// Visit a parse tree produced by TiDBParser#dropView.
+	VisitDropView(ctx *DropViewContext) interface{}
 
 	// Visit a parse tree produced by TiDBParser#viewReplaceOrAlgorithm.
 	VisitViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) interface{}

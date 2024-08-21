@@ -19,11 +19,17 @@ type TiDBParserListener interface {
 	// EnterCreateStatement is called when entering the createStatement production.
 	EnterCreateStatement(c *CreateStatementContext)
 
+	// EnterDropStatement is called when entering the dropStatement production.
+	EnterDropStatement(c *DropStatementContext)
+
 	// EnterCreateTable is called when entering the createTable production.
 	EnterCreateTable(c *CreateTableContext)
 
 	// EnterCreateView is called when entering the createView production.
 	EnterCreateView(c *CreateViewContext)
+
+	// EnterDropView is called when entering the dropView production.
+	EnterDropView(c *DropViewContext)
 
 	// EnterViewReplaceOrAlgorithm is called when entering the viewReplaceOrAlgorithm production.
 	EnterViewReplaceOrAlgorithm(c *ViewReplaceOrAlgorithmContext)
@@ -1444,11 +1450,17 @@ type TiDBParserListener interface {
 	// ExitCreateStatement is called when exiting the createStatement production.
 	ExitCreateStatement(c *CreateStatementContext)
 
+	// ExitDropStatement is called when exiting the dropStatement production.
+	ExitDropStatement(c *DropStatementContext)
+
 	// ExitCreateTable is called when exiting the createTable production.
 	ExitCreateTable(c *CreateTableContext)
 
 	// ExitCreateView is called when exiting the createView production.
 	ExitCreateView(c *CreateViewContext)
+
+	// ExitDropView is called when exiting the dropView production.
+	ExitDropView(c *DropViewContext)
 
 	// ExitViewReplaceOrAlgorithm is called when exiting the viewReplaceOrAlgorithm production.
 	ExitViewReplaceOrAlgorithm(c *ViewReplaceOrAlgorithmContext)

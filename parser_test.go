@@ -37,7 +37,7 @@ func (l *CustomErrorListener) ReportContextSensitivity(recognizer antlr.Parser, 
 	antlr.ConsoleErrorListenerINSTANCE.ReportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs)
 }
 
-func TestTiDBDBSQLParser(t *testing.T) {
+func TestTiDBSQLParser(t *testing.T) {
 	examples, err := os.ReadDir("examples")
 	require.NoError(t, err)
 

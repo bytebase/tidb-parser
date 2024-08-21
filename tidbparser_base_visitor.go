@@ -23,11 +23,19 @@ func (v *BaseTiDBParserVisitor) VisitCreateStatement(ctx *CreateStatementContext
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseTiDBParserVisitor) VisitDropStatement(ctx *DropStatementContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseTiDBParserVisitor) VisitCreateTable(ctx *CreateTableContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
 func (v *BaseTiDBParserVisitor) VisitCreateView(ctx *CreateViewContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseTiDBParserVisitor) VisitDropView(ctx *DropViewContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

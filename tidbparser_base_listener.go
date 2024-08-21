@@ -44,6 +44,12 @@ func (s *BaseTiDBParserListener) EnterCreateStatement(ctx *CreateStatementContex
 // ExitCreateStatement is called when production createStatement is exited.
 func (s *BaseTiDBParserListener) ExitCreateStatement(ctx *CreateStatementContext) {}
 
+// EnterDropStatement is called when production dropStatement is entered.
+func (s *BaseTiDBParserListener) EnterDropStatement(ctx *DropStatementContext) {}
+
+// ExitDropStatement is called when production dropStatement is exited.
+func (s *BaseTiDBParserListener) ExitDropStatement(ctx *DropStatementContext) {}
+
 // EnterCreateTable is called when production createTable is entered.
 func (s *BaseTiDBParserListener) EnterCreateTable(ctx *CreateTableContext) {}
 
@@ -55,6 +61,12 @@ func (s *BaseTiDBParserListener) EnterCreateView(ctx *CreateViewContext) {}
 
 // ExitCreateView is called when production createView is exited.
 func (s *BaseTiDBParserListener) ExitCreateView(ctx *CreateViewContext) {}
+
+// EnterDropView is called when production dropView is entered.
+func (s *BaseTiDBParserListener) EnterDropView(ctx *DropViewContext) {}
+
+// ExitDropView is called when production dropView is exited.
+func (s *BaseTiDBParserListener) ExitDropView(ctx *DropViewContext) {}
 
 // EnterViewReplaceOrAlgorithm is called when production viewReplaceOrAlgorithm is entered.
 func (s *BaseTiDBParserListener) EnterViewReplaceOrAlgorithm(ctx *ViewReplaceOrAlgorithmContext) {}

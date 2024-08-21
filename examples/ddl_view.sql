@@ -9,3 +9,7 @@ create or replace definer = current_user sql security invoker view my_view4(c1, 
 create view v_some_table as (with a as (select * from some_table) select * from a);
 
 #end
+
+#begin
+-- Drop view
+DROP VIEW IF EXISTS my_view1;
