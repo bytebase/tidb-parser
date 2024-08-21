@@ -976,6 +976,9 @@ type TiDBParserListener interface {
 	// EnterRealType is called when entering the realType production.
 	EnterRealType(c *RealTypeContext)
 
+	// EnterAutoRandomFieldLength is called when entering the autoRandomFieldLength production.
+	EnterAutoRandomFieldLength(c *AutoRandomFieldLengthContext)
+
 	// EnterFieldLength is called when entering the fieldLength production.
 	EnterFieldLength(c *FieldLengthContext)
 
@@ -2397,6 +2400,9 @@ type TiDBParserListener interface {
 
 	// ExitRealType is called when exiting the realType production.
 	ExitRealType(c *RealTypeContext)
+
+	// ExitAutoRandomFieldLength is called when exiting the autoRandomFieldLength production.
+	ExitAutoRandomFieldLength(c *AutoRandomFieldLengthContext)
 
 	// ExitFieldLength is called when exiting the fieldLength production.
 	ExitFieldLength(c *FieldLengthContext)

@@ -976,6 +976,9 @@ type TiDBParserVisitor interface {
 	// Visit a parse tree produced by TiDBParser#realType.
 	VisitRealType(ctx *RealTypeContext) interface{}
 
+	// Visit a parse tree produced by TiDBParser#autoRandomFieldLength.
+	VisitAutoRandomFieldLength(ctx *AutoRandomFieldLengthContext) interface{}
+
 	// Visit a parse tree produced by TiDBParser#fieldLength.
 	VisitFieldLength(ctx *FieldLengthContext) interface{}
 
