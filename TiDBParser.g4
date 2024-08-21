@@ -128,7 +128,7 @@ columnOption:
 	| COLLATE_SYMBOL collationName
 	| COLUMN_FORMAT_SYMBOL columnFormat
 	| STORAGE_SYMBOL storageMedia
-	| AUTO_RANDOM_SYMBOL fieldLength?;
+	| AUTO_RANDOM_SYMBOL autoRandomFieldLength?;
 
 constraintName: CONSTRAINT_SYMBOL identifier?;
 
@@ -1773,6 +1773,11 @@ nchar: type = NCHAR_SYMBOL | type = NATIONAL_SYMBOL CHAR_SYMBOL;
 realType:
 	type = REAL_SYMBOL
 	| type = DOUBLE_SYMBOL PRECISION_SYMBOL?;
+
+autoRandomFieldLength:
+	OPEN_PAR_SYMBOL shard = INT_NUMBER (
+		COMMA_SYMBOL range = INT_NUMBER
+	)? CLOSE_PAR_SYMBOL;
 
 fieldLength:
 	OPEN_PAR_SYMBOL (real_ulonglong_number | DECIMAL_NUMBER) CLOSE_PAR_SYMBOL;

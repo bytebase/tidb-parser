@@ -1299,6 +1299,10 @@ func (v *BaseTiDBParserVisitor) VisitRealType(ctx *RealTypeContext) interface{} 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseTiDBParserVisitor) VisitAutoRandomFieldLength(ctx *AutoRandomFieldLengthContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseTiDBParserVisitor) VisitFieldLength(ctx *FieldLengthContext) interface{} {
 	return v.VisitChildren(ctx)
 }

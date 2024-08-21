@@ -1992,6 +1992,12 @@ func (s *BaseTiDBParserListener) EnterRealType(ctx *RealTypeContext) {}
 // ExitRealType is called when production realType is exited.
 func (s *BaseTiDBParserListener) ExitRealType(ctx *RealTypeContext) {}
 
+// EnterAutoRandomFieldLength is called when production autoRandomFieldLength is entered.
+func (s *BaseTiDBParserListener) EnterAutoRandomFieldLength(ctx *AutoRandomFieldLengthContext) {}
+
+// ExitAutoRandomFieldLength is called when production autoRandomFieldLength is exited.
+func (s *BaseTiDBParserListener) ExitAutoRandomFieldLength(ctx *AutoRandomFieldLengthContext) {}
+
 // EnterFieldLength is called when production fieldLength is entered.
 func (s *BaseTiDBParserListener) EnterFieldLength(ctx *FieldLengthContext) {}
 
